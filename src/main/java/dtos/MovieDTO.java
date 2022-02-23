@@ -13,6 +13,7 @@ import java.util.List;
 /**
  *
  * @author tha
+ *
  */
 public class MovieDTO
 {
