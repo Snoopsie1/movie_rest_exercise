@@ -9,10 +9,9 @@ import javax.ws.rs.GET;
 import javax.ws.rs.Path;
 import javax.ws.rs.Produces;
 import javax.ws.rs.core.MediaType;
-import javax.ws.rs.core.Response;
 
 //Todo Remove or change relevant parts before ACTUAL use
-@Path("xxx")
+@Path("movie")
 public class MovieRest
 {
 
@@ -30,10 +29,10 @@ public class MovieRest
     @Path("count")
     @GET
     @Produces({MediaType.APPLICATION_JSON})
-    public Response getRenameMeCount() {
+    public String getRenameMeCount() {
         long count = FACADE.getMovieCount();
         //System.out.println("--------------->"+count);
-        return Response.ok().entity(GSON.toJson(count)).build();  //Done manually so no need for a DTO
+        return "{\"count\":"+count+"}";  //Done manually so no need for a DTO
     }
 
 }
