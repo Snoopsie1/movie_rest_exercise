@@ -9,6 +9,7 @@ import entities.Movie;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
 
 /**
  *
@@ -61,10 +62,19 @@ public class MovieDTO
     public String toString() {
         return "RenameMeDTO{" + "id=" + id + ", title=" + title + ", director=" + director + '}';
     }
-    
-    
-    
-    
-    
-    
+
+    @Override
+    public boolean equals(Object o)
+    {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        MovieDTO movieDTO = (MovieDTO) o;
+        return Objects.equals(title, movieDTO.title) && Objects.equals(director, movieDTO.director);
+    }
+
+    @Override
+    public int hashCode()
+    {
+        return Objects.hash(title, director);
+    }
 }
