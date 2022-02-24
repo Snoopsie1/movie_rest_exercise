@@ -34,7 +34,7 @@ public class MovieRest
 
     @GET
     @Path("count")
-    @Produces("application/json")
+    @Produces({MediaType.APPLICATION_JSON})
     public String getRenameMeCount() {
         long count = FACADE.getMovieCount();
         //System.out.println("--------------->"+count);
