@@ -34,7 +34,7 @@ public class MovieRest
 
     @GET
     @Path("count")
-    @Produces({MediaType.APPLICATION_JSON})
+    @Produces("application/json")
     public String getRenameMeCount() {
         long count = FACADE.getMovieCount();
         //System.out.println("--------------->"+count);
@@ -59,7 +59,7 @@ public class MovieRest
     @GET
     @Path("title/{title}")
     @Produces({MediaType.APPLICATION_JSON})
-    public Response getById(@PathParam("title") String title) throws EntityNotFoundException
+    public Response getByTitle(@PathParam("title") String title) throws EntityNotFoundException
     {
         MovieDTO p = FACADE.getMovieByTitle(title);
         return Response.ok().entity(GSON.toJson(p)).build();
