@@ -94,13 +94,13 @@ public class MovieResourceTest
                 .body("msg", equalTo("Hello World"));
     }
 
-    @Test
-    public void testCount() throws Exception {
-        given()
-                .contentType("application/json")
-                .get("/xxx/count").then()
-                .assertThat()
-                .statusCode(HttpStatus.OK_200.getStatusCode())
-                .body("count", equalTo(2));
-    }
+//    @Test
+//    public void testCount() throws Exception {
+//        given()
+//                .contentType("application/json")
+//                .get("/xxx/count").then()
+//                .assertThat()
+//                .statusCode(HttpStatus.OK_200.getStatusCode())
+//                .body("count", equalTo(2));
+//    }
 }
