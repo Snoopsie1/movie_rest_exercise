@@ -2,11 +2,14 @@ package rest;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
+import dtos.MovieDTO;
 import utils.EMF_Creator;
 import facades.MovieFacade;
 import javax.persistence.EntityManagerFactory;
+import javax.persistence.EntityNotFoundException;
 import javax.ws.rs.GET;
 import javax.ws.rs.Path;
+import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
@@ -42,6 +45,24 @@ public class MovieRest
     @Produces({MediaType.APPLICATION_JSON})
     public Response getAllMovies() {
         return Response.ok().entity(GSON.toJson(FACADE.getAllMovies())).build();
+    }
+
+    @GET
+    @Path("{id}")
+    @Produces({MediaType.APPLICATION_JSON})
+    public Response getById(@PathParam("id") int id) throws EntityNotFoundException
+    {
+        MovieDTO p = FACADE.getById(id);
+        return Response.ok().entity(GSON.toJson(p)).build();
+    }
+
+    @GET
+    @Path("title/{title}")
+    @Produces({MediaType.APPLICATION_JSON})
+    public Response getById(@PathParam("title") String title) throws EntityNotFoundException
+    {
+        MovieDTO p = FACADE.getMovieByTitle(title);
+        return Response.ok().entity(GSON.toJson(p)).build();
     }
 
 

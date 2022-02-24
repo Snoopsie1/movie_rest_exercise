@@ -35,7 +35,7 @@ public class MovieDTO
 
 
     public MovieDTO(Movie rm) {
-        if(rm.getId() != null)
+        if(rm.getId() != 0)
             this.id = rm.getId();
 
         this.title = rm.getTitle();

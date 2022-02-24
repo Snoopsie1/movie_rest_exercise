@@ -55,7 +55,7 @@ public class MovieFacade
         }
         return new MovieDTO(rme);
     }
-    public MovieDTO getById(long id) { //throws RenameMeNotFoundException {
+    public MovieDTO getById(int id) { //throws RenameMeNotFoundException {
         EntityManager em = emf.createEntityManager();
         Movie mv = em.find(Movie.class, id);
 //        if (rm == null)
@@ -66,7 +66,10 @@ public class MovieFacade
     public MovieDTO getMovieByTitle(String title) throws EntityNotFoundException
     {
         EntityManager em = emf.createEntityManager();
-        Movie mv = em.find(Movie.class, title);
+        TypedQuery<Movie> query = em.createQuery("SELECT m FROM Movie m WHERE m.title = :title", Movie.class);
+        query.setParameter("title", title);
+        //Movie mv = em.find(Movie.class, title);
+        Movie mv = query.getSingleResult();
         if (mv == null)
             throw new EntityNotFoundException("The Movie entity with title: "+title+" was not found");
         return new MovieDTO(mv);
