@@ -19,6 +19,7 @@ public class Populator {
     public static void populate(){
         EntityManagerFactory emf = EMF_Creator.createEntityManagerFactory();
         MovieFacade fe = MovieFacade.getFacadeExample(emf);
+
         fe.create(new MovieDTO(new Movie("First 1", "Last 1")));
         fe.create(new MovieDTO(new Movie("First 2", "Last 2")));
         fe.create(new MovieDTO(new Movie("First 3", "Last 3")));
